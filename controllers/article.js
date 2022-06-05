@@ -1,7 +1,7 @@
-const {v4: uuidv4} = require('uuid');
+const {ObjectId} = require('mongoose').Types;
 
 const articles = [{
-    id: uuidv4(),
+    id: ObjectId().toString(),
     title: 'Article 1',
     author: 'John Doe',
     body: 'This is the body of article 1',
@@ -18,7 +18,7 @@ class ArticleController {
     }
 
     static create(req, res) {
-        const article = {...req.body.article, id: uuidv4()};
+        const article = {...req.body.article, id: ObjectId().toString()};
         articles.push(article);
         res.send(article);
     }
