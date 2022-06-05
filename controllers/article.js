@@ -1,45 +1,46 @@
-const {ObjectId} = require('mongoose').Types;
+const {ArticleService} = require('../services');
 
-const articles = [{
-    id: ObjectId().toString(),
-    title: 'Article 1',
-    author: 'John Doe',
-    body: 'This is the body of article 1',
-}]
+const articleService = new ArticleService();
 
 class ArticleController {
-    static fetch(req, res) {
-        res.send(articles);
-    }
-
-    static find(req, res) {
-        const article = articles.find(article => article.id === req.params.id);
-        res.send(article);
-    }
-
-    static create(req, res) {
-        const article = {...req.body.article, id: ObjectId().toString()};
-        articles.push(article);
-        res.send(article);
-    }
-
-    static update(req, res) {
-        const article = articles.find(article => article.id === req.params.id);
-        if (!article) {
-            return res.status(404).send('Article not found');
+    static async fetch(req, res, next) {
+        try {
+            res.send(await articleService.fetch());
+        } catch (err) {
+            next(err);
         }
-        const updatedArticle = {...article, ...req.body.article};
-        articles[articles.indexOf(article)] = updatedArticle;
-        res.send(updatedArticle);
     }
 
-    static remove(req, res) {
-        const article = articles.find(article => article.id === req.params.id);
-        if (!article) {
-            return res.status(404).send('Article not found');
+    static async find(req, res, next) {
+        try {
+            res.send(await articleService.find(req.params.id));
+        } catch (err) {
+            next(err);
         }
-        articles.splice(articles.indexOf(article), 1);
-        res.end();
+    }
+
+    static async create(req, res, next) {
+        try {
+            res.send(await articleService.create(req.body.article));
+        } catch (err) {
+            next(err);
+        }
+    }
+
+    static async update(req, res) {
+        try {
+            res.send(await articleService.update(req.params.id, req.body.article));
+        } catch (err) {
+            next(err);
+        }
+    }
+
+    static async remove(req, res, next) {
+        try {
+            res.send(await articleService.remove(req.params.id));
+        } catch (err) {
+            next(err);
+        }
     }
 }
 

@@ -7,7 +7,7 @@ echo "***** POST *****"
 
 ID=$(curl --silent --request POST $ENDPOINT --header "$CONTENT_TYPE" \
   --data '{"article":{"author":"Jane","title":"A new post","body":"Exclusive data!"}}' | \
-  jq --raw-output '.id')
+  jq --raw-output '._id')
 
 curl --silent $ENDPOINT | jq
 

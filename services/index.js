@@ -1,0 +1,1 @@
+exports.ArticleService = require('./article');
