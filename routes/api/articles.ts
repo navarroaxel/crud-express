@@ -1,6 +1,7 @@
-const {ArticleController} = require('../../controllers');
+import {Router} from 'express';
+import {ArticleController} from '../../controllers';
 
-module.exports = router => {
+const articlesApi = (router: Router) => {
     router.get('/', ArticleController.fetch);
     router.post('/', ArticleController.create);
     router.get('/:id', ArticleController.find);
@@ -9,3 +10,5 @@ module.exports = router => {
 
     return router;
 };
+
+export default articlesApi;
