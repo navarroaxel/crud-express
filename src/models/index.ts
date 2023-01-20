@@ -1,4 +1,6 @@
-import { Article, IArticle } from './article.model';
-import { Comment, IComment } from './comment.model';
+import * as Article from './article.model';
+import * as Comment from './comment.model';
+import * as User from './user.model';
+import * as Role from './role.model';
 
-export { Article, IArticle, Comment, IComment };
+export { Article, Comment, User, Role };

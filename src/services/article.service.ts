@@ -1,23 +1,23 @@
-import { Article, IArticle } from '../models';
+import { Article } from '../models';
 
 const fetch = () => {
-  return Article.find().lean().exec();
+  return Article.ArticleModel.find().lean().exec();
 };
 
 const find = (id: string) => {
-  return Article.findById(id).lean().exec();
+  return Article.ArticleModel.findById(id).lean().exec();
 };
 
-const create = (article: IArticle) => {
-  return Article.create(article);
+const create = (article: Article.IArticle) => {
+  return Article.ArticleModel.create(article);
 };
 
-const update = (id: string, article: IArticle) => {
-  return Article.findByIdAndUpdate(id, article).lean().exec();
+const update = (id: string, article: Article.IArticle) => {
+  return Article.ArticleModel.findByIdAndUpdate(id, article).lean().exec();
 };
 
 const remove = (id: string) => {
-  return Article.findByIdAndDelete(id).lean().exec();
+  return Article.ArticleModel.findByIdAndDelete(id).lean().exec();
 };
 
 const ArticleService = {

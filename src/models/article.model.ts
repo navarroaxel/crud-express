@@ -15,6 +15,6 @@ const ArticleSchema = new mongoose.Schema(
   { timestamps: true, versionKey: false }
 );
 
-const Article = mongoose.model<IArticle>('Article', ArticleSchema);
+const ArticleModel = mongoose.model<IArticle>('Article', ArticleSchema);
 
-export { IArticle, Article };
+export { IArticle, ArticleModel };

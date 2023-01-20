@@ -1,15 +1,13 @@
 import mongoose from 'mongoose';
 
-class MongoService {
-  async connectDb(url: string) {
-    try {
-      mongoose.set('strictQuery', false);
-      await mongoose.connect(url);
-      console.log('Connected to mongo');
-    } catch (error) {
-      console.log(error);
-    }
+const connectDb = async function (url: string) {
+  try {
+    mongoose.set('strictQuery', false);
+    const connection = await mongoose.connect(url);
+    return connection;
+  } catch (error) {
+    console.log(error);
   }
-}
+};
 
-export default new MongoService();
+export { connectDb };

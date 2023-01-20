@@ -36,7 +36,6 @@ const update = async (req: Request, res: Response, next: NextFunction) => {
 const remove = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const result = await ArticleService.remove(req.params.id);
-    debugger;
     res.send(result);
   } catch (error) {
     next(error);

@@ -1,5 +1,5 @@
 import express from 'express';
-import { errorHandler } from '../middleware/errorHandler';
+import { errorHandler } from '../middleware';
 import ApiRouter from './api';
 
 class Routes {

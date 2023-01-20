@@ -6,6 +6,5 @@ export const errorHandler = (
   res: Response,
   next: NextFunction
 ) => {
-  debugger;
   res.status(500).send(err.message);
 };

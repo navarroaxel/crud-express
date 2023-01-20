@@ -1,24 +1,24 @@
-import { Comment, IComment } from '../models/comment.model';
+import { Comment } from '../models';
 
 class CommentService {
   fetch() {
-    return Comment.find().lean().exec();
+    return Comment.CommentModel.find().lean().exec();
   }
 
   find(id: string) {
-    return Comment.findById(id).lean().exec();
+    return Comment.CommentModel.findById(id).lean().exec();
   }
 
-  create(comment: IComment) {
-    return Comment.create(comment);
+  create(comment: Comment.IComment) {
+    return Comment.CommentModel.create(comment);
   }
 
-  update(id: string, comment: IComment) {
-    return Comment.findByIdAndUpdate(id, comment).lean().exec();
+  update(id: string, comment: Comment.IComment) {
+    return Comment.CommentModel.findByIdAndUpdate(id, comment).lean().exec();
   }
 
   delete(id: string) {
-    return Comment.findByIdAndDelete(id).lean().exec();
+    return Comment.CommentModel.findByIdAndDelete(id).lean().exec();
   }
 }
 
