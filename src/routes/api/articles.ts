@@ -1,6 +1,7 @@
-const {ArticleController} = require('../../controllers');
+import { ArticleController } from '../../controllers';
+import { Router } from 'express';
 
-module.exports = router => {
+export const articleRoutes = (router: Router) => {
     router.get('/', ArticleController.fetch);
     router.post('/', ArticleController.create);
     router.get('/:id', ArticleController.find);

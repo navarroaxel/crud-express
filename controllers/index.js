@@ -1,1 +1,0 @@
-exports.ArticleController = require('./article');
